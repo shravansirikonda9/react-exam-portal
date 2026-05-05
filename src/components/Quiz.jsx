@@ -1,27 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const questions = [
-  {
-    questionText: "What is the standard file extension for React components?",
-    answerOptions: [
-      { answerText: ".html", isCorrect: false },
-      { answerText: ".jsx", isCorrect: true },
-      { answerText: ".jsm", isCorrect: false },
-      { answerText: ".react", isCorrect: false },
-    ],
-  },
-  {
-    questionText: "Which hook is used to give a component memory?",
-    answerOptions: [
-      { answerText: "useEffect", isCorrect: false },
-      { answerText: "useNavigate", isCorrect: false },
-      { answerText: "useState", isCorrect: true },
-      { answerText: "useMemory", isCorrect: false },
-    ],
-  },
-];
-
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -105,6 +84,7 @@ function Quiz() {
         setIsLoading(false);
       } catch (error) {
         console.error("Failed to fetch questions:", error);
+        setIsLoading(false); // Add this line so it doesn't spin forever!
       }
     };
 
